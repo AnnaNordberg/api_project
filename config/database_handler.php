@@ -10,10 +10,10 @@ $db = "ecommerce";
 // MAKE CONNECTION
 try {
     $dsn = "mysql:host=$host;dbname=$db;";
-    $dbh = new PDO($dsn, $user, $pass);
-} catch(PDOException $e) {
+    $databaseHandler = new PDO($dsn, $user, $pass);
 
-    echo "Error!" . $e->getMessage() . "<br />";
-    die();
+} catch(PDOException $e) {
+    // ON ERROR
+    echo "Error! ". $e->getMessage() ."<br />";
+    die;
 }
-?>

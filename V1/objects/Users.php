@@ -1,6 +1,6 @@
 <?php
 
-    include("../config/database_handler.php");
+    include("../../config/database_handler.php");
 
     class User {
 
