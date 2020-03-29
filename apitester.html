@@ -77,22 +77,22 @@
             </form>
 
         <hr />
-<!-- 
+
         <h2>Lägg till post:</h2>
 
         <form class="form">
             <input type="text" name="url" placeholder="http://" /><br />
-            <input type="text" name="title" placeholder="title" /><br />
+            <input type="text" name="name" placeholder="name" /><br />
             <input type="text" name="token" placeholder="token" /><br />
-            <textarea name="content" placeholder="content"></textarea><br />
+           <!--  <textarea name="content" placeholder="content"></textarea><br /> -->
             GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
                 value="post" /><br />
             <input type="submit" />
         </form>
 
     <hr />
-
-        <h2>Uppdatera post:</h2>
+    
+  <!--       <h2>Uppdatera post:</h2>
 
         <form class="form">
             <input type="text" name="token" placeholder="token" /><br />
@@ -108,12 +108,13 @@
             <input type="submit" />
         </form>
 
-    <hr />
+    <hr /> -->
+    
 
     <h2>Hämta en post:</h2>
 
     <form class="form">
-        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api/posts/getPost.php" /><br />
+        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api_project/V1/products/viewProduct.php" /><br />
         <input type="text" name="id" placeholder="id" /><br />
 
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
@@ -126,7 +127,7 @@
     <h2>Hämta alla posts:</h2>
 
     <form class="form">
-        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api/posts/getAllPosts.php" /><br />
+        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api_project/V1/products/viewAllProducts.php" /><br />
         <input type="text" name="token" placeholder="token" /><br />
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
             value="post" /><br />
@@ -135,7 +136,7 @@
 </div>
 
 
- -->
+ 
     <div id="right">
         <textarea id="serverResponse"></textarea>
     </div>
