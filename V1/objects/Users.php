@@ -52,7 +52,7 @@
        
        private function insertUserToDatabase($username_param, $password_param, $email_param) {
 
-            $query_string = "INSERT INTO Users (username, password, email) VALUES(:username, :password, :email)";
+            $query_string = "INSERT INTO Users (username, password, email) VALUES (:username, :password, :email)";
             $statementHandler = $this->database_handler->prepare($query_string);
 
             if($statementHandler !== false ){

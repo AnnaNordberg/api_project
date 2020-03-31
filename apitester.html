@@ -53,7 +53,7 @@
                 <h2>Registrera användare:</h2>
 
             <form class="form">
-                <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/users/register.php"/><br /> 
+                <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/users/register.php"/><br /> 
                 <input type="text" name="username" placeholder="username" /><br />
                 <input type="password" name="password" placeholder="password" /><br />
                 <input type="email" name="email" placeholder="email" /><br />
@@ -67,7 +67,7 @@
             <h2>Logga in användare:</h2>
 
             <form class="form">
-                <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/users/login.php" /><br />
+                <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/users/login.php" /><br />
                 <input type="text" name="username" placeholder="username" /><br />
                 <input type="password" name="password" placeholder="password" /><br />
               GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
@@ -83,7 +83,7 @@
 
     <!-- Ändrade även name="title" till "name"  -->
         <form class="form">
-            <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/cart/addProduct.php" /><br />
+            <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/addProduct.php" /><br />
             <input type="text" name="productName" placeholder="productName" /><br />
             <input type="text" name="token" placeholder="token" /><br />
             <!-- <textarea name="content" placeholder="content"></textarea><br /> -->
@@ -99,7 +99,7 @@
         <form class="form">
             <input type="text" name="token" placeholder="token" /><br />
 
-            <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/products/updateProduct.php" /><br />
+            <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/updateProduct.php" /><br />
             <input type="number" name="ID" placeholder="ID" /><br />
 
             <input type="text" name="productName" placeholder="productName" /><br />
@@ -115,7 +115,7 @@
     <h2>Hämta en Produkt:</h2>
 
     <form class="form">
-        <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/products/viewProduct.php" /><br />
+        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/viewProduct.php" /><br />
         <input type="text" name="ID" placeholder="ID" /><br />
 
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
@@ -128,7 +128,7 @@
     <h2>Hämta alla Produkter:</h2>
 
     <form class="form">
-        <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/products/viewAllProducts.php" /><br />
+        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/viewAllProducts.php" /><br />
         <input type="text" name="token" placeholder="token" /><br />
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
             value="post" /><br />
@@ -143,12 +143,27 @@
 <form class="form">
     <input type="text" name="token" placeholder="token" /><br />
 
-    <input type="text" name="url" placeholder="http://" value="http://localhost/api_project/V1/products/deleteProduct.php" /><br />
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/deleteProduct.php" /><br />
     <input type="number" name="ID" placeholder="ID" /><br />
     GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
         value="post" /><br />
     <input type="submit" />
 </form>
+
+<hr />
+
+<h2>Lägg till i varukorgen:</h2>
+
+
+    <form class="form">
+        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/addToCart.php" /><br />
+        <input type="text" name="productAmount" placeholder="productAmount" /><br />
+        <input type="text" name="productID" placeholder="productID" /><br />
+        <input type="text" name="tokenID" placeholder="tokenID" /><br />
+        GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
+            value="post" /><br />
+        <input type="submit" />
+    </form>
 
 <hr />
 

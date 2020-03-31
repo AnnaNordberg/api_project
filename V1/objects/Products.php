@@ -21,10 +21,10 @@ class Products {
     public function fetchSingleProduct() {
 
         //Ändrade WHERE id=:product_id till ID
-        //kan vara problem med namnet availability?
+        //kan vara problem med namnet availability? Ändrade till stockAmount
         
 
-        $query_string = "SELECT ID, productName, price, availability FROM Products WHERE ID=:product_id";
+        $query_string = "SELECT ID, productName, price, stockAmount FROM Products WHERE ID=:product_id";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
@@ -44,7 +44,7 @@ class Products {
 
     public function fetchAllProducts() {
 
-        $query_string = "SELECT ID, productName, price, availability FROM Products";
+        $query_string = "SELECT ID, productName, price, stockAmount FROM Products";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
@@ -62,7 +62,7 @@ class Products {
     //Ändrade om namnen i :name_IN och tog även bort ,content_param från addproduct( ).
     public function addProduct($title_param) {
 
-        $query_string = "INSERT INTO Products (productName, price, availability) VALUES(:name_IN, 150, 20)";
+        $query_string = "INSERT INTO Products (productName, price, stockAmount) VALUES(:name_IN, 150, 20)";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
@@ -84,6 +84,32 @@ class Products {
         }
     } 
 
+    public function addToCart($productAmount_param, $productID_param, $tokenID_param) {
+
+        $query_string = "INSERT INTO Cart (productAmount, productID, tokenID) VALUES(:productAmount_IN, :productID_IN, :tokenID_IN)";
+        $statementHandler = $this->database_handler->prepare($query_string);
+
+        if($statementHandler !== false) {
+
+            $statementHandler->bindParam(":productAmount_IN", $productAmount_param);
+            $statementHandler->bindParam(":productID_IN", $productID_param);
+            $statementHandler->bindParam(":tokenID_IN", $tokenID_param);
+
+           /* $statementHandler->bindParam(":content_IN", $content_param); */
+            
+            $success = $statementHandler->execute();
+
+            if($success === true) {
+                echo "OK!";
+            } else {
+                echo "Error while trying to insert product to database!";
+            }
+
+        } else {
+            echo "Could not create database statement!";
+            die();
+        }
+    } 
 
 
     public function updateProduct($data) {
@@ -101,21 +127,21 @@ class Products {
             
         }
 
-        // Testar att byta content till availability , 
+        // Testar att byta content till stockAmount , 
         //Ändrade även [id] till [Id]
 
-        if(!empty($data['availability'])) {
-            $query_string = "UPDATE Products SET availability=:availability WHERE ID=:product_id";
+        if(!empty($data['stockAmount'])) {
+            $query_string = "UPDATE Products SET stockAmount=:stockAmount WHERE ID=:product_id";
             $statementHandler = $this->database_handler->prepare($query_string);
 
-            $statementHandler->bindParam(":availability", $data['availability']);
+            $statementHandler->bindParam(":stockAmount", $data['stockAmount']);
             $statementHandler->bindParam(":product_id", $data['ID']);
 
             $statementHandler->execute();
             
         }
 
-        $query_string = "SELECT ID, productName, price, availability FROM Products WHERE ID=:product_id";
+        $query_string = "SELECT ID, productName, price, stockAmount FROM Products WHERE ID=:product_id";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         $statementHandler->bindParam(":product_id", $data['ID']);
@@ -155,6 +181,10 @@ class Products {
     }
 
 }
+
+
+//Cart
+
 
 
 ?>
