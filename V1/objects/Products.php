@@ -84,33 +84,6 @@ class Products {
         }
     } 
 
-    public function addToCart($productAmount_param, $productID_param, $tokenID_param) {
-
-        $query_string = "INSERT INTO Cart (productAmount, productID, tokenID) VALUES(:productAmount_IN, :productID_IN, :tokenID_IN)";
-        $statementHandler = $this->database_handler->prepare($query_string);
-
-        if($statementHandler !== false) {
-
-            $statementHandler->bindParam(":productAmount_IN", $productAmount_param);
-            $statementHandler->bindParam(":productID_IN", $productID_param);
-            $statementHandler->bindParam(":tokenID_IN", $tokenID_param);
-
-           /* $statementHandler->bindParam(":content_IN", $content_param); */
-            
-            $success = $statementHandler->execute();
-
-            if($success === true) {
-                echo "OK!";
-            } else {
-                echo "Error while trying to insert product to database!";
-            }
-
-        } else {
-            echo "Could not create database statement!";
-            die();
-        }
-    } 
-
 
     public function updateProduct($data) {
 
@@ -128,7 +101,7 @@ class Products {
         }
 
         // Testar att byta content till stockAmount , 
-        //Ändrade även [id] till [Id]
+        //Ändrade även [id] till [ID]
 
         if(!empty($data['stockAmount'])) {
             $query_string = "UPDATE Products SET stockAmount=:stockAmount WHERE ID=:product_id";
@@ -181,9 +154,6 @@ class Products {
     }
 
 }
-
-
-//Cart
 
 
 

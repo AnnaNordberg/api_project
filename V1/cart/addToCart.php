@@ -1,7 +1,9 @@
 <?php
 include("../objects/Products.php");
 include("../objects/Users.php");
-$cart_object = new Products ($databaseHandler);
+include("../objects/Cart.php");
+
+$cart_object = new Cart ($databaseHandler);
 
 $productAmount_IN = ( isset($_GET['productAmount']) ? $_GET['productAmount'] : '' );
 $productID_IN = ( isset($_GET['productID']) ? $_GET['productID'] : '' );
