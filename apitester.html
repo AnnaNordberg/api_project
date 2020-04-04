@@ -179,29 +179,19 @@
 
 </div>
 
-<h2>Hämta en post:</h2>
 
+
+<h2>Hämta varukorg:</h2>
 <form class="form">
-    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api_project/products/viewProduct.php" /><br />
-    <input type="text" name="ID" placeholder="ID" /><br />
-
-    GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
-        value="post" /><br />
-    <input type="submit" />
-</form>
-
-<hr />
-
-<h2>Hämta alla posts:</h2>
-
-<form class="form">
-    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api_project/products/viewAllProducts.php" /><br />
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/viewCart.php" /><br /> 
     <input type="text" name="token" placeholder="token" /><br />
+    <input type="number" name="userID" placeholder="userID" /><br />
     GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
-        value="post" /><br />
+    value="post" /><br />
     <input type="submit" />
 </form>
-</div>
+
+
 
     <div id="right">
         <textarea id="serverResponse"></textarea>

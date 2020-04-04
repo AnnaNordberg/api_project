@@ -4,7 +4,7 @@ include("../../config/database_handler.php");
 
 class Cart {
     private $database_handler;
-    private $cart_ID;
+    private $cartID;
 
     public function __construct( $database_handler_IN ) {
 
@@ -15,18 +15,18 @@ class Cart {
 
     public function setCartID($cart_ID_IN) {
 
-        $this->cart_ID = $cart_ID_IN;
+        $this->cartID = $cart_ID_IN;
 
     }
 
-    public function fetchSinglePost() {
+  /*   public function fetchSinglePost() {
 
-        $query_string = "SELECT ID, productAmount, productID, userID FROM Cart WHERE ID=:cart_ID";
+        $query_string = "SELECT ID, productAmount, productID, userID FROM Cart WHERE ID=:cartID";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
             
-            $statementHandler->bindParam(":cart_ID", $this->cart_ID);
+            $statementHandler->bindParam(":cartID", $this->cartID);
             $statementHandler->execute();
 
             return $statementHandler->fetch();
@@ -37,9 +37,9 @@ class Cart {
             echo "Could not create database statement!";
             die();
         }
-    }
+    } */
 
-    public function fetchAllPosts() {
+    public function fetchCart() {
 
         $query_string = "SELECT ID, productAmount, productID, userID FROM Cart";
         $statementHandler = $this->database_handler->prepare($query_string);
