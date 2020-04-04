@@ -21,7 +21,7 @@ if($user_handler->validateToken($token) === false) {
     die();
 } 
 
-//Kan det va så att det inte funkar för att vi inte har med nån "user_id" som han har i sin fetchSingelPost() funktion? 
+
 
 
 if($cartID > -1) {
