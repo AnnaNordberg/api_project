@@ -5,7 +5,7 @@ include('../objects/Cart.php');
 
 $product_handler = new Products($databaseHandler);
 $user_handler = new User($databaseHandler);
-$cart_handler = new Cart($databaseHandler);
+$user_handler = new Cart($databaseHandler);
 
 if(!empty($_POST['token'])) {
 
@@ -21,7 +21,7 @@ if(!empty($_POST['token'])) {
             die();
         }
 
-        $product_handler->deleteProduct($_POST);
+        $product_handler->removeFromCart($_POST);
         echo "Produkt har nu raderats";
 
 

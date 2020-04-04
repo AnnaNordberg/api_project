@@ -159,7 +159,7 @@
         <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/addToCart.php" /><br />
         <input type="text" name="productAmount" placeholder="productAmount" /><br />
         <input type="text" name="productID" placeholder="productID" /><br />
-        <input type="text" name="tokenID" placeholder="tokenID" /><br />
+        <input type="text" name="userID" placeholder="userID" /><br />
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
             value="post" /><br />
         <input type="submit" />
@@ -168,15 +168,39 @@
     <h2>Radera från varukorg:</h2>
 
     <form class="form">
-            <input type="text" name="token" placeholder="token" /><br />
+            <input type="text" name="userID" placeholder="userID" /><br />
             <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/removeProduct.php" /><br />
-            <input type="number" name="ID" placeholder="ID" /><br />
+            <input type="number" name="productID" placeholder="productID" /><br />
             GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
                 value="post" /><br />
             <input type="submit" />
         </form>
 <hr />
 
+</div>
+
+<h2>Hämta en post:</h2>
+
+<form class="form">
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api_project/products/viewProduct.php" /><br />
+    <input type="text" name="ID" placeholder="ID" /><br />
+
+    GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
+        value="post" /><br />
+    <input type="submit" />
+</form>
+
+<hr />
+
+<h2>Hämta alla posts:</h2>
+
+<form class="form">
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2/api_project/products/viewAllProducts.php" /><br />
+    <input type="text" name="token" placeholder="token" /><br />
+    GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
+        value="post" /><br />
+    <input type="submit" />
+</form>
 </div>
 
     <div id="right">

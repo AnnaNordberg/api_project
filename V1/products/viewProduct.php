@@ -1,14 +1,15 @@
 <?php
-include("../objects/Products.php");
-$posts_object = new Posts($databaseHandler);
+include('../objects/Cart.php');
+include('../objects/Users.php');
+$cart_object = new Cart($databaseHandler);
 
-$postID = ( !empty($_GET['ID'] ) ? $_GET['ID'] : -1 );
+$cartID = ( !empty($_GET['ID'] ) ? $_GET['ID'] : -1 );
 
 
-if($postID > -1) {
+if($cartID > -1) {
 
-    $posts_object->setPostId($postID);
-    print_r( $posts_object->fetchSinglePost() );
+    $cart_object->setCartId($cartID);
+    print_r( $cart_object->fetchSinglePost() );
 
 
 } else {
@@ -16,5 +17,3 @@ if($postID > -1) {
     echo "Error: Missing parameter id!";
 
 }
-
-?>
