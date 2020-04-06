@@ -39,13 +39,13 @@ class Cart {
         }
     } */
 
-    public function fetchCart() {
+    public function fetchCart($user_id_param) {
 
-        $query_string = "SELECT ID, productAmount, productID, userID FROM Cart";
+        $query_string = "SELECT ID, productAmount, productID, userID FROM Cart WHERE userID=:user_id_IN";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
-
+            $statementHandler->bindParam(":user_id_IN", $user_id_param);
             $statementHandler->execute();
             return $statementHandler->fetchAll();
 
