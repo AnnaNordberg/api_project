@@ -156,6 +156,7 @@ class Products {
 // FÖRSÖK PÅ SORTERING:
 public function fetchAllProductsSort() {
 
+    $order = "";
     $query_string = "SELECT ID, productName, price, stockAmount FROM Products ORDER BY price";
     $statementHandler = $this->database_handler->prepare($query_string);
 
@@ -163,6 +164,26 @@ public function fetchAllProductsSort() {
 
         $statementHandler->execute();
         return $statementHandler->fetchAll();
+
+
+    } else {
+        echo "Could not create database statement!";
+        die();
+    }
+    
+}
+
+public function fetchAllProductsDESC() {
+
+   
+    $query_string = "SELECT ID, productName, price, stockAmount FROM Products ORDER BY price DESC";
+    $statementHandler = $this->database_handler->prepare($query_string);
+
+    if($statementHandler !== false) {
+
+        $statementHandler->execute();
+        return $statementHandler->fetchAll();
+
 
     } else {
         echo "Could not create database statement!";

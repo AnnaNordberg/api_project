@@ -1,5 +1,5 @@
 <?php
-include("../objects/Products.php");
+include("../../objects/Products.php");
 
 $products_object = new Products($databaseHandler);
 
