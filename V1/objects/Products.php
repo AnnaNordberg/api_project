@@ -60,14 +60,16 @@ class Products {
     }
 
     //Ändrade om namnen i :name_IN och tog även bort ,content_param från addproduct( ).
-    public function addProduct($title_param) {
+    public function addProduct($productName_param,$price_param,$stockAmount_param ) {
 
-        $query_string = "INSERT INTO Products (productName, price, stockAmount) VALUES(:name_IN, 150, 20)";
+        $query_string = "INSERT INTO Products (productName, price, stockAmount) VALUES(:name_IN, :price_IN, :stockAmount_IN)";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
 
-            $statementHandler->bindParam(":name_IN", $title_param);
+            $statementHandler->bindParam(":name_IN", $productName_param);
+            $statementHandler->bindParam(":price_IN", $price_param);
+            $statementHandler->bindParam(":stockAmount_IN", $stockAmount_param);
            /*  $statementHandler->bindParam(":content_IN", $content_param); */
             
             $success = $statementHandler->execute();
@@ -100,14 +102,12 @@ class Products {
             
         }
 
-        // Testar att byta content till stockAmount , 
-        //Ändrade även [id] till [ID]
-
-        if(!empty($data['stockAmount'])) {
-            $query_string = "UPDATE Products SET stockAmount=:stockAmount WHERE ID=:product_id";
+       
+        if(!empty($data['price'])) {
+            $query_string = "UPDATE Products SET price=:price WHERE ID=:product_id";
             $statementHandler = $this->database_handler->prepare($query_string);
 
-            $statementHandler->bindParam(":stockAmount", $data['stockAmount']);
+            $statementHandler->bindParam(":price", $data['price']);
             $statementHandler->bindParam(":product_id", $data['ID']);
 
             $statementHandler->execute();
@@ -152,6 +152,26 @@ class Products {
 
 
     }
+
+// FÖRSÖK PÅ SORTERING:
+public function fetchAllProductsSort() {
+
+    $query_string = "SELECT ID, productName, price, stockAmount FROM Products ORDER BY price";
+    $statementHandler = $this->database_handler->prepare($query_string);
+
+    if($statementHandler !== false) {
+
+        $statementHandler->execute();
+        return $statementHandler->fetchAll();
+
+    } else {
+        echo "Could not create database statement!";
+        die();
+    }
+    
+}
+
+
 
 }
 

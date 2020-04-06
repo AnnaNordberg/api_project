@@ -1,11 +1,9 @@
 <?php
-include('../objects/Products.php');
-include('../objects/Users.php');
 include('../objects/Cart.php');
+include('../objects/Users.php');
 
-$product_handler = new Products($databaseHandler);
+$cart_handler = new Cart($databaseHandler);
 $user_handler = new User($databaseHandler);
-$user_handler = new Cart($databaseHandler);
 
 if(!empty($_POST['token'])) {
 
@@ -21,13 +19,13 @@ if(!empty($_POST['token'])) {
             die();
         }
 
-        $product_handler->removeFromCart($_POST);
-        echo "Produkt har nu raderats";
+        $cart_handler->deleteCart($_POST);
+        echo "Cart har nu raderats";
 
 
     } else {
 
-        // här borde man kanske skapa en separat funktion i ex "users.php" dit man hänvisar så man slipper upprepa. 
+
         $retObject = new stdClass;
         $retObject->error = "Invalid id!";
         $retObject->errorCode = 1336;

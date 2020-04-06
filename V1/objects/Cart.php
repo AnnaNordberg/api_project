@@ -86,27 +86,24 @@ class Cart {
 
     // Ta bort produkt från varukorg
 
-    public function removeFromCart($data) {
+    public function deleteCart($data) {
 
-//senaste försök ändrade ID till productID
 
-//testa lägga till delete product From CART
-
-        if(!empty($data['productID'])) {
-            $query_string = "DELETE FROM Cart WHERE productID=:product_id";
+        if(!empty($data['ID'])) {
+            $query_string = "DELETE FROM Cart WHERE ID=:cart_id";
             $statementHandler = $this->database_handler->prepare($query_string);
 
-            $statementHandler->bindParam(":product_id", $data['productID']);
+            $statementHandler->bindParam(":cart_id", $data['ID']);
 
             $statementHandler->execute();
             
         }
 
     
-        $query_string = "SELECT ID FROM Cart WHERE productID=:product_id";
+        $query_string = "SELECT ID FROM Cart WHERE ID=:cart_id";
         $statementHandler = $this->database_handler->prepare($query_string);
 
-        $statementHandler->bindParam(":product_id", $data['productID']);
+        $statementHandler->bindParam(":cart_id", $data['ID']);
         $statementHandler->execute();
 
         echo json_encode($statementHandler->fetch());
