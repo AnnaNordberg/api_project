@@ -21,7 +21,7 @@ $token = $_POST['token'];
     echo "</pre>";
  }  else {
     echo "<pre>";
-    print_r($products_object->fetchAllProductsSort());
+    print_r($products_object->fetchAllProducts());
     echo "</pre>";
  }
 

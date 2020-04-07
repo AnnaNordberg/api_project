@@ -57,15 +57,16 @@ class Cart {
     } 
 
 
-    public function addToCart($productAmount_param, $productID_param, $userID_param) {
+    public function addToCart($productAmount_param, $productID_param, $totalPrice_param, $userID_param) {
 
-        $query_string = "INSERT INTO Cart (productAmount, productID, userID) VALUES(:productAmount_IN, :productID_IN, :userID_IN)";
+        $query_string = "INSERT INTO Cart (productAmount, productID, totalPrice, userID) VALUES(:productAmount_IN, :productID_IN, :totalPrice_IN, :userID_IN)";
         $statementHandler = $this->database_handler->prepare($query_string);
 
         if($statementHandler !== false) {
 
             $statementHandler->bindParam(":productAmount_IN", $productAmount_param);
             $statementHandler->bindParam(":productID_IN", $productID_param);
+            $statementHandler->bindParam(":totalPrice_IN", $totalPrice_param);
             $statementHandler->bindParam(":userID_IN", $userID_param);
 
            /* $statementHandler->bindParam(":content_IN", $content_param); */
@@ -110,5 +111,32 @@ class Cart {
 
 
     }
+    public function updateCart($data) {
+
+        
+
+        if(!empty($data['productAmount'])) {
+            $query_string = "UPDATE Cart SET productAmount=:productAmount WHERE ID=:cart_id";
+            $statementHandler = $this->database_handler->prepare($query_string);
+
+            $statementHandler->bindParam(":productAmount", $data['productAmount']);
+            $statementHandler->bindParam(":cart_id", $data['ID']);
+
+            $statementHandler->execute();
+            
+        }
+
+
+        $query_string = "SELECT ID, productAmount, totalPrice, productID FROM Cart WHERE ID=:cart_id";
+        $statementHandler = $this->database_handler->prepare($query_string);
+
+        $statementHandler->bindParam(":cart_id", $data['ID']);
+        $statementHandler->execute();
+
+        echo json_encode($statementHandler->fetch());
+
+
+    }
+    
 
 } 
