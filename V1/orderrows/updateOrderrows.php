@@ -1,9 +1,11 @@
 <?php
-include('../../objects/Cart.php');
+include('../../objects/Products.php');
 include('../../objects/Users.php');
+include('../../objects/Orderrows.php');
 
-$cart_handler = new Cart($databaseHandler);
+$product_handler = new Products($databaseHandler);
 $user_handler = new User($databaseHandler);
+$orderrows_handler = new Orderrows($databaseHandler);
 
 if(!empty($_POST['token'])) {
 
@@ -19,12 +21,10 @@ if(!empty($_POST['token'])) {
             die();
         }
 
-        $cart_handler->deleteCart($_POST);
-        echo "Cart har nu raderats";
+        $orderrows_handler->updateOrderrows($_POST);
 
 
     } else {
-
 
         $retObject = new stdClass;
         $retObject->error = "Invalid id!";

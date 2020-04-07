@@ -155,10 +155,11 @@
 
 
     <form class="form">
-        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/addToCart.php" /><br />
+        <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/orderrows/addToOrderrows.php" /><br />
+        <input type="text" name="token" placeholder="token" /><br />
         <input type="text" name="productAmount" placeholder="productAmount" /><br />
         <input type="text" name="productID" placeholder="productID" /><br />
-        <input type="text" name="userID" placeholder="userID" /><br />
+        <input type="text" name="orderID" placeholder="orderID" /><br />
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
             value="post" /><br />
         <input type="submit" />
@@ -168,7 +169,7 @@
 
     <form class="form">
             <input type="text" name="token" placeholder="token" /><br />
-            <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/deleteCart.php" /><br />
+            <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/orderrows/deleteOrderrows.php" /><br />
             <input type="number" name="ID" placeholder="ID" /><br />
             GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
                 value="post" /><br />
@@ -182,9 +183,9 @@
 
 <h2>Hämta varukorg:</h2>
 <form class="form">
-    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/viewCart.php" /><br /> 
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/orderrows/viewOrderrows.php" /><br /> 
     <input type="text" name="token" placeholder="token" /><br />
-    <input type="number" name="userID" placeholder="userID" /><br />
+    <input type="number" name="orderID" placeholder="orderID" /><br />
     GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
     value="post" /><br />
     <input type="submit" />
@@ -203,12 +204,12 @@
 </form>
 
 <hr />
-<h2>Uppdatera varukorg:</h2>
+<h2>Uppdatera orderrow:</h2>
 
 <form class="form">
     <input type="text" name="token" placeholder="token" /><br />
 
-    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/cart/updateCart.php" /><br />
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/orderrows/updateOrderrows.php" /><br />
     <input type="number" name="ID" placeholder="ID" /><br />
     <input type="text" name="productAmount" placeholder="productAmount" /><br />
     GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
@@ -217,6 +218,8 @@
 </form>
 
 <hr />
+
+
 
 
 

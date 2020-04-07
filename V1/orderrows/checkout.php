@@ -1,12 +1,12 @@
 <?php
-include('../../objects/Cart.php');
+include('../../objects/Orderrows.php');
 include('../../objects/Users.php');
 
-$cart_object = new Cart($databaseHandler);
+$orderrows_object = new Orderrows($databaseHandler);
 $user_handler = new User($databaseHandler);
 
 $token = $_POST['token'];
-$cartID = ( !empty($_POST['userID'] ) ? $_POST['userID'] : -1 );
+$orderrowsID = ( !empty($_POST['userID'] ) ? $_POST['userID'] : -1 );
 
 
 
@@ -21,13 +21,15 @@ if($user_handler->validateToken($token) === false) {
 
 
 
- if($cartID > -1) {
+ if($orderrowsID > -1) {
 
-    $cart_object->setCartId($cartID);
-    print_r( $cart_object->fetchCart($cartID) );
+    $orderrows_object->setOrderrowsId($orderrowsID);
+    print_r( $orderrows_object->fetchOrderrowsID($orderrowsID) );
 
 } else {
 
     echo "Error: Missing parameter id!";
 
 } 
+
+    

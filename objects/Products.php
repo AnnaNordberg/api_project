@@ -172,7 +172,25 @@ class Products {
     }
   
     
+    public function getProductPrice($productID_param) {
 
+        $query_string = "SELECT price FROM Products WHERE ID=:productID_IN";
+        $statementHandler = $this->database_handler->prepare($query_string);
+
+        if($statementHandler !== false) {
+            
+            $statementHandler->bindParam(":productID_IN", $productID_param);
+            $statementHandler->execute();
+
+            return $statementHandler->fetch();
+
+        } else {
+            echo "Could not create database statement!";
+            die();
+        }
+
+
+    }
 
 
 
