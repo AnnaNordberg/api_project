@@ -23,12 +23,12 @@ if($user_handler->validateToken($token) === false) {
 
  if($orderrowsID > -1) {
 
-    $orderrows_object->setOrderrowsId($orderrowsID);
+    $orderrows_object->setOrderrowsID($orderrowsID);
     print_r( $orderrows_object->fetchOrderrowsID($orderrowsID) );
 
 } else {
 
-    echo "Error: Missing parameter id!";
+    echo "Error: Missing parameter iD!";
 
 } 
 

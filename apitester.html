@@ -79,9 +79,9 @@
 
         
 
-        <h2>Lägg till produkt:</h2>
+        <h2>För Admin, Lägg till produkt:</h2>
 
-    <!-- Ändrade även name="title" till "name"  -->
+
         <form class="form">
             <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/addProduct.php" /><br />
             <input type="text" name="productName" placeholder="productName" /><br />
@@ -95,7 +95,7 @@
 
     <hr />
 
-        <h2>Uppdatera produkt:</h2>
+        <h2>För Admin, Uppdatera produkt:</h2>
 
         <form class="form">
             <input type="text" name="token" placeholder="token" /><br />
@@ -151,7 +151,7 @@
 
 <hr />
 
-<h2>Lägg till i varukorgen:</h2>
+<h2>Lägg till i varukorgen (orderrows):</h2>
 
 
     <form class="form">
@@ -159,13 +159,13 @@
         <input type="text" name="token" placeholder="token" /><br />
         <input type="text" name="productAmount" placeholder="productAmount" /><br />
         <input type="text" name="productID" placeholder="productID" /><br />
-        <input type="text" name="orderID" placeholder="orderID" /><br />
+        <input type="text" name="userID" placeholder="userID" /><br />
         GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
             value="post" /><br />
         <input type="submit" />
     </form>
 
-    <h2>Radera rad ur varukorg:</h2>
+    <h2>Radera rad ur varukorg (orderrows):</h2>
 
     <form class="form">
             <input type="text" name="token" placeholder="token" /><br />
@@ -181,11 +181,11 @@
 
 
 
-<h2>Hämta varukorg:</h2>
+<h2>Hämta varukorg (orderrows):</h2>
 <form class="form">
     <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/orderrows/viewOrderrows.php" /><br /> 
     <input type="text" name="token" placeholder="token" /><br />
-    <input type="number" name="orderID" placeholder="orderID" /><br />
+    <input type="number" name="cartID" placeholder="cartID" /><br />
     GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
     value="post" /><br />
     <input type="submit" />
@@ -204,7 +204,7 @@
 </form>
 
 <hr />
-<h2>Uppdatera orderrow:</h2>
+<h2>Uppdatera antal av en produkt i varukorg (orderrows):</h2>
 
 <form class="form">
     <input type="text" name="token" placeholder="token" /><br />

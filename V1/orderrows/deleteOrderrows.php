@@ -27,7 +27,7 @@ if(!empty($_POST['token'])) {
 
 
         $retObject = new stdClass;
-        $retObject->error = "Invalid id!";
+        $retObject->error = "Invalid ID!";
         $retObject->errorCode = 1336;
 
         echo json_encode($retObject);

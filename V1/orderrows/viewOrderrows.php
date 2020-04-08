@@ -1,14 +1,16 @@
 <?php
+
 include('../../objects/Orderrows.php');
 include('../../objects/Users.php');
+include('../../objects/Products.php');
 
-$orderrows_object = new Orderrows($databaseHandler);
+$orderrows_object = new Orderrows ($databaseHandler);
 $user_handler = new User($databaseHandler);
+$product_handler = new Products($databaseHandler);
 
 $token = $_POST['token'];
-$orderrowsID = ( !empty($_POST['orderID'] ) ? $_POST['orderID'] : -1 );
-
-
+$orderrowsID = ( !empty($_POST['cartID'] ) ? $_POST['cartID'] : -1 );
+ 
 
 if($user_handler->validateToken($token) === false) {
     $retObject = new stdClass;
@@ -19,15 +21,14 @@ if($user_handler->validateToken($token) === false) {
 } 
 
 
+if($orderrowsID > -1) {
 
-
- if($orderrowsID > -1) {
-
-    $orderrows_object->setOrderrowsId($orderrowsID);
+    $orderrows_object->setOrderrowsID($orderrowsID);
     print_r( $orderrows_object->fetchOrderrows($orderrowsID) );
 
 } else {
 
-    echo "Error: Missing parameter id!";
+    echo "Error: Missing parameter ID!";
 
-} 
+}
+?>

@@ -6,7 +6,7 @@
 
         private $database_handler;
         private $username;
-        private $token_validity_time = 20; // minutes
+        private $token_validity_time = 60; // minutes
 
 
        
@@ -66,12 +66,12 @@
                 $statementHandler->execute();
 
 
-                $last_inserted_user_id = $this->database_handler->lastInsertId();
+                $last_inserted_user_ID = $this->database_handler->lastInsertID();
 
-                $query_string = "SELECT ID, username, email FROM Users WHERE ID=:last_user_id";
+                $query_string = "SELECT ID, username, email FROM Users WHERE ID=:last_user_ID";
                 $statementHandler = $this->database_handler->prepare($query_string);
 
-                $statementHandler->bindParam(':last_user_id', $last_inserted_user_id);
+                $statementHandler->bindParam(':last_user_ID', $last_inserted_user_ID);
 
                 $statementHandler->execute();
 
@@ -187,7 +187,7 @@
 
         private function checkToken($userID_IN) {
 
-            $query_string = "SELECT token, date_updated FROM Tokens WHERE user_id=:userID";
+            $query_string = "SELECT token, date_updated FROM Tokens WHERE user_ID=:userID";
             $statementHandler = $this->database_handler->prepare($query_string);
 
             if($statementHandler !== false) {
@@ -230,17 +230,17 @@
 
         }
 
-        private function createToken($user_id_parameter) {
+        private function createToken($user_ID_parameter) {
 
             $uniqToken = md5($this->username.uniqid('', true).time());
 
-            $query_string = "INSERT INTO Tokens (userID, token, date_updated) VALUES(:userid, :token, :current_time)";
+            $query_string = "INSERT INTO Tokens (userID, token, date_updated) VALUES(:userID, :token, :current_time)";
             $statementHandler = $this->database_handler->prepare($query_string);
 
             if($statementHandler !== false) {
 
                 $currentTime = time();
-                $statementHandler->bindParam(":userid", $user_id_parameter);
+                $statementHandler->bindParam(":userID", $user_ID_parameter);
                 $statementHandler->bindParam(":token", $uniqToken);
                 $statementHandler->bindParam(":current_time", $currentTime, PDO::PARAM_INT);
 
@@ -306,7 +306,7 @@
 
     }
 
-    private function getUserId($token) {
+    private function getUserID($token) {
         $query_string = "SELECT userID FROM Tokens WHERE token=:token";
         $statementHandler = $this->database_handler->prepare($query_string);
 
@@ -352,8 +352,8 @@
     }
     public function isAdmin($token)
     {
-        $user_id = $this->getUserId($token);
-        $user_data = $this->getUserData($user_id);
+        $user_iD = $this->getUserID($token);
+        $user_data = $this->getUserData($user_iD);
 
         if($user_data['role'] == 1) {
             return true;
