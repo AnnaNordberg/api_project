@@ -1,5 +1,5 @@
 <?php 
-
+//Hämta databasen
 include("../../config/database_handler.php");
 
 class Orderrows {
@@ -12,12 +12,15 @@ class Orderrows {
 
     }
 
+//funktion för att sätta ett ID på orderrow
 
     public function setOrderrowsID($orderrows_ID_IN) {
 
         $this->orderrowsID = $orderrrows_ID_IN;
 
     }
+
+    //funktion för att skapa en Cart när en användare lägger produkter i varukorgen första gången
 
     public function createCart($userID_param) {
         $query_string = "INSERT INTO Cart (userID) VALUES(:userID_IN)";
@@ -36,6 +39,8 @@ class Orderrows {
 
        }
 
+       //funktion för att skapa ett CartID när en användare lägger produkter i varukorgen första gången
+
     public function createCartID($userID_param) {
         $query_string = "INSERT INTO Cart (userID) VALUES(:userID_IN)";
         $statementHandler = $this->database_handler->prepare($query_string);
@@ -53,6 +58,8 @@ class Orderrows {
 
        }
 
+       //funktion för att hämta CartID
+
        public function getCartID($userID_param) {
         $query_string = "SELECT ID FROM Cart WHERE userID=:userID_IN";
         $statementHandler = $this->database_handler->prepare($query_string);
@@ -69,6 +76,8 @@ class Orderrows {
             }
        }
 
+       //Funktion för att kolla om UserID finns
+
     public function checkUserID($userID_param) {
         $query_string = "SELECT userID FROM Cart WHERE userID=:userID_IN";
         $statementHandler = $this->database_handler->prepare($query_string);
@@ -80,9 +89,11 @@ class Orderrows {
             return $statementHandler->fetch();
 
             } else {
-                echo "Error while trying to hämta nått ? to database!";
+                echo "Error trying to check User ID!";
             }
        } 
+
+       //Funktion för att hämta rader(produkter) i orderrows
 
     public function fetchOrderrows($cart_ID_param) {
 
@@ -100,7 +111,7 @@ class Orderrows {
         }
         
     } 
-
+//Funktion för att lägga till produkter i orderrows(Varukorg)
 
     public function addProductToOrderrows($productAmount_param, $totalPrice_param, $productID_param, $cartID_param) {
 
@@ -114,7 +125,7 @@ class Orderrows {
             $statementHandler->bindParam(":totalPrice_IN", $totalPrice_param);
             $statementHandler->bindParam(":cartID_IN", $cartID_param);
 
-           /* $statementHandler->bindParam(":content_IN", $content_param); */
+ 
             
             $success = $statementHandler->execute();
 
@@ -130,7 +141,7 @@ class Orderrows {
         }
     } 
 
-    // Ta bort produkt från varukorg
+    // Funktion för att ta bort produkt från varukorg
 
     public function deleteOrderrows($data) {
 
@@ -156,6 +167,8 @@ class Orderrows {
 
 
     }
+
+    //Funktion för att uppdatera produkt antal i orderrows(varukorg)
     public function updateOrderrows($data) {
 
         
@@ -182,7 +195,7 @@ class Orderrows {
 
 
     }
-///ändrat från order till cart
+//Funktion för att hämta orderrowID 
     public function fetchOrderrowsID($cart_ID_param) {
 
         $query_string = "SELECT ID FROM Orderrows WHERE cartID=:cart_ID_IN";

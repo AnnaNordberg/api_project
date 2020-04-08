@@ -1,5 +1,5 @@
 <?php
-
+//Hämta databasen
 include("../../config/database_handler.php");
 
 class Products {
@@ -11,13 +11,13 @@ class Products {
         $this->database_handler = $database_handler_IN;
 
     }
-
+//funktion för att sätta ID på product
     public function setProductID($product_ID_IN) {
 
         $this->product_ID = $product_ID_IN;
 
     }
-
+//Funktion för att hämta en produkt från databasen
     public function fetchSingleProduct() {
 
        
@@ -40,7 +40,7 @@ class Products {
             die();
         }
     }
-
+//Funktion för att hämta alla produkter från databasen
     public function fetchAllProducts() {
 
         $query_string = "SELECT ID, productName, price, stockAmount FROM Products ORDER BY price";
@@ -57,6 +57,7 @@ class Products {
         }
         
     }
+    //Funktion för att hämta alla produkter från databasen och sortera dom fallande
     public function fetchAllProductsDESC() {
 
    
@@ -76,7 +77,7 @@ class Products {
         
     }
 
-    
+//Funktion för att lägga till produkt i databasen    
     public function addProduct($productName_param,$price_param,$stockAmount_param ) {
 
         $query_string = "INSERT INTO Products (productName, price, stockAmount) VALUES(:name_IN, :price_IN, :stockAmount_IN)";
@@ -103,7 +104,7 @@ class Products {
         }
     } 
 
-
+//Funktion fö att uppdatera produkt i databasen genom att ändra namn på produkten och pris.
     public function updateProduct($data) {
 
      
@@ -143,7 +144,7 @@ class Products {
     }
 
 
-
+//En funktion för att ta bort en produkt ur databasen 
 
     public function deleteProduct($data) {
 
@@ -170,7 +171,7 @@ class Products {
 
     }
   
-    
+  //En funktion för att hämta ut priset på en produkt (används för att kunna räkna ut totalpris)  
     public function getProductPrice($productID_param) {
 
         $query_string = "SELECT price FROM Products WHERE ID=:productID_IN";

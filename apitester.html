@@ -137,6 +137,20 @@
 
 <hr />
 
+<h2>Hämta alla Produkter och sortera dom:</h2>
+
+<form class="form">
+    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/sort.php" /><br />
+    <input type="text" name="token" placeholder="token" /><br />
+    Sortera efter: Fallande<input type="radio" name="order" value="DESC"> Stigande<input type="radio" name="order" value="ASC" /><br />
+    GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
+        value="post" /><br />
+    <input type="submit" />
+</form>
+
+<hr />
+<hr>
+
 <h2>Radera produkt:</h2>
 
 <form class="form">
@@ -150,6 +164,7 @@
 </form>
 
 <hr />
+<hr>
 
 <h2>Lägg till i varukorgen (orderrows):</h2>
 
@@ -191,17 +206,6 @@
     <input type="submit" />
 </form>
 
-<hr>
-<h2>Hämta alla Produkter och sortera dom:</h2>
-
-<form class="form">
-    <input type="text" name="url" placeholder="http://" value="http://192.168.64.2//api_project/V1/products/sort.php" /><br />
-    <input type="text" name="token" placeholder="token" /><br />
-    Sortera efter: Fallande<input type="radio" name="order" value="DESC"> Stigande<input type="radio" name="order" value="ASC" /><br />
-    GET: <input type="radio" name="method" value="get" checked /> POST: <input type="radio" name="method"
-        value="post" /><br />
-    <input type="submit" />
-</form>
 
 <hr />
 <h2>Uppdatera antal av en produkt i varukorg (orderrows):</h2>

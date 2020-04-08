@@ -1,5 +1,5 @@
 <?php
-
+//Hämta databasen
     include("../../config/database_handler.php");
 
     class User {
@@ -15,13 +15,15 @@
            $this->database_handler = $database_handler_parameter_IN;
        }
 
+       //Funktion för att lägga till användare 
        public function addUser($username_IN, $password_IN, $email_IN) {
         $return_object = new stdClass();
 
+        //Kolla om användarnamn och email redan är registrerat
         if($this->isUsernameTaken($username_IN) === false) {
             if($this->isEmailTaken($email_IN) === false) {
 
-                
+                //Lägg till användaren i databasen
                 $return = $this->insertUserToDatabase($username_IN, $password_IN, $email_IN);
                 if($return !== false) {
 
@@ -49,14 +51,14 @@
 
         return json_encode($return_object);
        }
-       
+       //Lägg till användaren i databasen
        private function insertUserToDatabase($username_param, $password_param, $email_param) {
 
             $query_string = "INSERT INTO Users (username, password, email) VALUES (:username, :password, :email)";
             $statementHandler = $this->database_handler->prepare($query_string);
 
             if($statementHandler !== false ){
-
+                //Kryptera lösenordet
                 $encrypted_password = md5($password_param);
 
                 $statementHandler->bindParam(':username', $username_param);
@@ -85,7 +87,7 @@
 
        }
 
-
+//funktion för att kolla om användarnamnet redan finns
        private function isUsernameTaken( $username_param ) {
 
             $query_string = "SELECT COUNT(ID) FROM Users WHERE username=:username";
@@ -112,7 +114,7 @@
         }
 
 
-        
+        //Funktion för att kolla om mailadressen redan finns
         
         private function isEmailTaken( $email_param ) {
             $query_string = "SELECT COUNT(ID) FROM Users WHERE email=:email";
@@ -138,7 +140,7 @@
             }
         }
 
-
+//funktionen för att logga in en användare
 
         public function loginUser($username_parameter, $password_parameter) {
             $return_object = new stdClass();
@@ -229,7 +231,7 @@
             }
 
         }
-
+//Funktion för att skapa en token till användare när den loggar in
         private function createToken($user_ID_parameter) {
 
             $uniqToken = md5($this->username.uniqid('', true).time());
@@ -256,7 +258,7 @@
 
         }
 
-    
+//Funktion för att validera token    
     public function validateToken($token) {
 
         $query_string = "SELECT userID, date_updated FROM Tokens WHERE token=:token";
@@ -306,6 +308,8 @@
 
     }
 
+    //funktion för att hämta userID
+
     private function getUserID($token) {
         $query_string = "SELECT userID FROM Tokens WHERE token=:token";
         $statementHandler = $this->database_handler->prepare($query_string);
@@ -326,6 +330,8 @@
             echo "Couldn't create a statementhandler!";
         }
     }
+
+    //Funktion för att hämta användarens data/information
 
     private function getUserData($userID) {
 
@@ -349,12 +355,12 @@
             echo "Couldn't create statement handler!";
         }
 
-    }
+    } //Funktion för att kolla om användaren är Admin
     public function isAdmin($token)
     {
         $user_iD = $this->getUserID($token);
         $user_data = $this->getUserData($user_iD);
-
+//titta vilken role användaren har i databasen 0=vanlig användare 1=Admin
         if($user_data['role'] == 1) {
             return true;
         } else {

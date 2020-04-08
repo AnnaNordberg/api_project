@@ -4,8 +4,7 @@ include("../../objects/Users.php");
 
 $products_object = new Products($databaseHandler);
 $user_handler = new User($databaseHandler);
-//ANDERS KOD
-//$posts_object = new Posts($databaseHandler);
+
 
 
 
@@ -36,8 +35,8 @@ $stockAmount_IN = ( isset($_POST['stockAmount']) ? $_POST['stockAmount'] : '' );
  if(!empty($productName_IN)) {
  if(!empty($price_IN)) {
 if(!empty($stockAmount_IN)) {    
- // tog bort  $products_object->addproduct($title_IN, >>>>$content_IN<<<<<<); ur raden nedan
-       $products_object->addProduct($productName_IN,$price_IN,$stockAmount_IN);
+
+$products_object->addProduct($productName_IN,$price_IN,$stockAmount_IN);
      
 
    } else {

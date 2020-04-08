@@ -23,3 +23,24 @@ V1/users
     - man ska kunna registrera en användare
     - man ska se om användarens användarnamn/email redan är tagen
     - man ska kunna logga in
+
+
+
+    REGLER I PROJEKTET
+    -ID skrivs alltid med caps
+    -variabelnamn skrivs med camelCase
+    - "variabel IN skrivs med _
+
+
+GETTING STARTED/DOWNLOADS
+
+DATABASE 
+To create the database needed to view this project follow the steps below:
+
+1. Go to https://github.com/AnnaNordberg/api_project to view the project
+2. click the link called "ecommerce.sql" to download the database
+
+
+BUILT WITH Visual Studio Code GitHub phpMyAdmin
+
+AUTHORS Anna Nordberg

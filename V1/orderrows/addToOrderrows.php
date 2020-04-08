@@ -3,6 +3,7 @@ include("../../objects/Products.php");
 include("../../objects/Users.php");
 include("../../objects/Orderrows.php");
 
+//Hämta klasser
 $orderrows_object = new Orderrows ($databaseHandler);
 $user_handler = new User($databaseHandler);
 $product_object = new Products ($databaseHandler);
@@ -13,6 +14,7 @@ $productID_IN = ( isset($_POST['productID']) ? $_POST['productID'] : '' );
 $tokenID_IN = ( isset($_POST['token']) ? $_POST['token'] : '' );
 $userID_IN = ( isset($_POST['userID']) ? $_POST['userID'] : '');
 
+//räkna ut totalpris av produkter
 $productPrice = $product_object->getProductPrice($productID_IN);
 $totalPrice_IN = $productAmount_IN * $productPrice['0'];
 
