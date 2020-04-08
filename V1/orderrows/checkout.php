@@ -1,13 +1,16 @@
+
 <?php
+
 include('../../objects/Orderrows.php');
 include('../../objects/Users.php');
 
-$orderrows_object = new Orderrows($databaseHandler);
+$orderrows_object = new Orderrows ($databaseHandler);
 $user_handler = new User($databaseHandler);
 
+$userID_IN = ( isset($_POST['userID']) ? $_POST['userID'] : '');
 $token = $_POST['token'];
-$orderrowsID = ( !empty($_POST['userID'] ) ? $_POST['userID'] : -1 );
-
+$checkoutStatus = 1;
+$cartID = $orderrows_object->getCartID($userID_IN);
 
 
 if($user_handler->validateToken($token) === false) {
@@ -18,18 +21,10 @@ if($user_handler->validateToken($token) === false) {
     die();
 } 
 
-
-
-
- if($orderrowsID > -1) {
-
-    $orderrows_object->setOrderrowsID($orderrowsID);
-    print_r( $orderrows_object->fetchOrderrowsID($orderrowsID) );
-
+if(!empty($userID_IN)) {
+    $orderrows_object->checkoutCart($checkoutStatus, $userID_IN);
+    $orderrows_object->updatestockAmount ($cartID[0]);
+    echo "Nu är din varukorg utcheckad";
 } else {
-
-    echo "Error: Missing parameter iD!";
-
-} 
-
-    
+    echo "Error: userID cannot be empty!";
+}

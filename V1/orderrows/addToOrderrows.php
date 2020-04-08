@@ -34,9 +34,9 @@ if(!empty($productAmount_IN)) {
              die();
          }
       
-         $test = $orderrows_object->checkUserID($userID_IN);
+         $existingCartID = $orderrows_object->checkUserID($userID_IN);
 
-         if (($test[0] == $userID_IN) === true ) {
+         if (($existingCartID[0] == $userID_IN) === true ) {
             $cartID = $orderrows_object->getCartID($userID_IN);
             $cartID_IN = $cartID['0'];
             $orderrows_object->addProductToOrderrows($productAmount_IN, $totalPrice_IN, $productID_IN, $cartID_IN);

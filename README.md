@@ -43,4 +43,4 @@ To create the database needed to view this project follow the steps below:
 
 BUILT WITH Visual Studio Code GitHub phpMyAdmin
 
-AUTHORS Anna Nordberg
+AUTHOR Anna Nordberg
