@@ -252,33 +252,7 @@ class Orderrows {
 
     }
 
-    //Funktion för att uppdatera produkt antal i orderrows(varukorg)
-    public function updateOrderrows($data) {
 
-        
-
-        if(!empty($data['productAmount'])) {
-            $query_string = "UPDATE Orderrows SET productAmount=:productAmount WHERE ID=:orderrows_iD";
-            $statementHandler = $this->database_handler->prepare($query_string);
-
-            $statementHandler->bindParam(":productAmount", $data['productAmount']);
-            $statementHandler->bindParam(":orderrows_iD", $data['ID']);
-
-            $statementHandler->execute();
-            
-        }
-
-
-        $query_string = "SELECT ID, productAmount, totalPrice, productID FROM Orderrows WHERE ID=:orderrows_iD";
-        $statementHandler = $this->database_handler->prepare($query_string);
-
-        $statementHandler->bindParam(":orderrows_iD", $data['ID']);
-        $statementHandler->execute();
-
-        echo json_encode($statementHandler->fetch());
-
-
-    }
 //Funktion för att hämta orderrowID 
     public function fetchOrderrowsID($cart_ID_param) {
 
