@@ -48,4 +48,5 @@ SKAPA DATABAS
 
 BUILT WITH Visual Studio Code GitHub phpMyAdmin
 
-AUTHOR Anna Nordberg
+AUTHOR 
+Anna Nordberg
