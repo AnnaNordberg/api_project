@@ -1,42 +1,32 @@
 <?php
-include('../../objects/Products.php');
-include('../../objects/Users.php');
 include('../../objects/Orderrows.php');
+include('../../objects/Users.php');
 
-$product_handler = new Products($databaseHandler);
-$user_handler = new User($databaseHandler);
 $orderrows_handler = new Orderrows($databaseHandler);
+$user_handler = new User($databaseHandler);
 
 if(!empty($_POST['token'])) {
-
-    if(!empty($_POST['ID'])) { 
-
         $token = $_POST['token'];
 
         if($user_handler->validateToken($token) === false) {
             $retObject = new stdClass;
             $retObject->error = "Token is invalid";
-            $retObject->errorCode = 1338;
+            $retObject->errorCode = 554;
             echo json_encode($retObject);
             die();
         }
 
-        $orderrows_handler->updateOrderrows($_POST);
-
-
-    } else {
-
-        $retObject = new stdClass;
-        $retObject->error = "Invalid id!";
-        $retObject->errorCode = 1336;
-
-        echo json_encode($retObject);
-    }
+        $productAmount_IN = ( isset($_POST['amount']) ? $_POST['amount'] : '');
+        $rowID_IN = ( isset($_POST['rowID']) ? $_POST['rowID'] : '');
+        
+        $orderrows_handler->updateOrderrows($productAmount_IN, $rowID_IN);
+      
+        echo "Antal produkter på varukorgsrad $rowID_IN är nu ändrat $productAmount_IN ";
 
 } else {
     $retObject = new stdClass;
     $retObject->error = "No token found!";
-    $retObject->errorCode = 1337;
+    $retObject->errorCode = 557;
 
     echo json_encode($retObject);
 }

@@ -86,22 +86,6 @@ class Orderrows {
    }
 
 
-//Funktion för att antalet produkter ska ändras när en kund checkar ut sin varukorg
-
-   public function updatestockAmount ($cartID_param) {
-
-    $query_string = "UPDATE Orderrows JOIN Products ON Orderrows.productID= products.ID SET stockAmount=stockAmount-productAmount WHERE cartID=:cartID_IN";
-    $statementHandler = $this->database_handler->prepare($query_string);
-
-    if($statementHandler !== false) {
-        $statementHandler->bindParam(":cartID_IN", $cartID_param);
-
-        $statementHandler->execute();
-
-    } else {
-            echo "Error while trying to insert product to database!";
-    }
-   }
 
 
     //funktion för att skapa en Cart när en användare lägger produkter i varukorgen första gången
@@ -251,6 +235,29 @@ class Orderrows {
 
 
     }
+    //Funktion för att updatera en rad i varukorgen/orderrows med antalet produkter
+
+
+    public function updateOrderrows($productAmount_param, $orderrowsID_param) {
+
+        $query_string = "UPDATE Orderrows SET productAmount=:productAmount_IN WHERE ID=:orderrowsID_IN";
+        $statementHandler = $this->database_handler->prepare($query_string);
+
+        if($statementHandler !== false) {
+
+        $statementHandler->bindParam(":productAmount_IN", $productAmount_param);
+        $statementHandler->bindParam(":orderrowsID_IN", $orderrowsID_param);
+
+        $statementHandler->execute();    
+
+        } else {
+            echo "Could not create database statement!";
+            die();
+        }
+
+    }
+    
+    
 
 
 //Funktion för att hämta orderrowID 
